@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tg">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d14"><meta name="description" content="Soni 3D Studio — офлайн муҳити моделсозӣ аз аксҳои чандтарафа">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+<title>Soni 3D Studio</title>
+</head>
+<body>
+<header class="topbar"><div class="brand"><div class="logo">S3</div><div><b>Soni 3D Studio</b><small>OFFLINE WORKSPACE</small></div></div><div class="status"><i></i> Офлайн омода</div></header>
+<main>
+<section class="intro"><div><span class="eyebrow">MULTI-VIEW WORKFLOW</span><h1>Аз аксҳо ба <em>3D</em></h1><p>Аксҳоро аз чанд тараф илова кун, модели ибтидоиро соз ва лоиҳаро дар дастгоҳ нигоҳ дор.</p></div><button id="newProject" class="btn primary">＋ Лоиҳаи нав</button></section>
+<div class="workspace">
+<aside class="panel source-panel"><div class="panel-head"><h2>01 / Аксҳои истинодӣ</h2><span id="photoCount" class="pill">0 / 6</span></div>
+<p class="muted">Барои натиҷаи беҳтар аксҳои як объектро бо равшании якхела илова кун.</p>
+<div class="upload-grid">
+<label class="upload-tile"><input type="file" accept="image/*" data-view="front"><span>＋</span><b>Пеш</b><small>FRONT</small></label>
+<label class="upload-tile"><input type="file" accept="image/*" data-view="back"><span>＋</span><b>Қафо</b><small>BACK</small></label>
+<label class="upload-tile"><input type="file" accept="image/*" data-view="left"><span>＋</span><b>Чап</b><small>LEFT</small></label>
+<label class="upload-tile"><input type="file" accept="image/*" data-view="right"><span>＋</span><b>Рост</b><small>RIGHT</small></label>
+<label class="upload-tile"><input type="file" accept="image/*" data-view="top"><span>＋</span><b>Боло</b><small>TOP</small></label>
+<label class="upload-tile"><input type="file" accept="image/*" data-view="detail"><span>＋</span><b>Ҷузъиёт</b><small>DETAIL</small></label>
+</div>
+<div class="row"><button id="clearPhotos" class="btn secondary">Тоза кардани аксҳо</button><button id="buildModel" class="btn primary" disabled>Сохтани модел</button></div>
+<div class="notice"><b>Муҳим:</b> ин версия офлайн кор мекунад ва модели ибтидоии геометрӣ месозад. Барқарорсозии фотограмметрии воқеӣ аз аксҳо ҳоло дохил нест.</div>
+</aside>
+<section class="panel viewport-panel"><div class="panel-head"><h2>02 / Намоишгари 3D</h2><div class="view-tools"><button id="toggleWire" title="Wireframe">◇ Wire</button><button id="resetView" title="Reset view">↺</button></div></div>
+<div id="viewport"><canvas id="scene" aria-label="3D preview"></canvas><div id="emptyState"><div class="cube">◇</div><b>Модел ҳоло сохта нашудааст</b><span>Аксҳоро илова кун ва «Сохтани модел»-ро пахш намо.</span></div><div class="axis">X <i>Y</i> Z</div></div>
+<div class="model-controls"><label>Баландӣ <input id="height" type="range" min="0.5" max="2.5" step="0.1" value="1.2"></label><label>Паҳноӣ <input id="width" type="range" min="0.5" max="2.5" step="0.1" value="1.1"></label><label>Дарозӣ <input id="length" type="range" min="1" max="4" step="0.1" value="3"></label></div>
+<div class="row export-row"><button id="exportObj" class="btn secondary" disabled>↓ Содироти OBJ</button><button id="exportGlb" class="btn secondary" disabled>↓ Содироти GLB</button><button id="saveProject" class="btn primary">Захира кардани лоиҳа</button></div>
+</section>
+</div>
+<section class="panel projects"><div class="panel-head"><h2>03 / Лоиҳаҳои ман</h2><span class="muted">Захира дар ҳамин дастгоҳ</span></div><div id="projectList" class="project-list"><div class="empty-projects">Ҳоло лоиҳа нест. Аввал модел соз.</div></div></section>
+<footer>SONI 3D STUDIO <span>v1.0 · PWA · OFFLINE</span></footer>
+</main>
+<script src="app.js"></script>
+<script>if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body></html>

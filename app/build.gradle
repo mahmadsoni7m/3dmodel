@@ -1,0 +1,22 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'tj.soni.studio3d'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'tj.soni.studio3d'
+        minSdk 23
+        targetSdk 28
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
+
+tasks.register('copyWebAssets', Copy) {
+    from(rootProject.projectDir)
+    include 'index.html', 'style.css', 'app.js', 'sw.js', 'manifest.webmanifest'
+    into layout.buildDirectory.dir('generated/webAssets/www')
+}
+tasks.named('preBuild').configure { dependsOn('copyWebAssets') }
+android.sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/webAssets'))

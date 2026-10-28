@@ -1,0 +1,11 @@
+{
+  "name": "Soni 3D Studio",
+  "short_name": "Soni 3D",
+  "description": "Offline multi-view 3D modeling workspace",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080d14",
+  "theme_color": "#080d14",
+  "icons": []
+}
